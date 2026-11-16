@@ -143,3 +143,14 @@ running left no disk mounted, so nothing booted and the machine stopped
 at `READY.`; `MOUNT "NET-TOOLS.D81"` then `BOOT` brought the menu back.
 The same reset during Gemini or NTP kept the disk and returned to the
 menu.
+
+Rebuilt on 2026-11-16 with the clients' new stack and crypto, carrying
+the card's own settings (`CARRY=` the disk taken off the card:
+bbscfg, identity, gemhosts and irc.cfg, byte for byte). On the
+machine, from `BOOT`: every client started from the menu, used against
+the Mac's test servers (NTP synced; Gopher fetched; FTP and SFTP moved
+a file each way, byte-identical; Gemini fetched over TLS; IRC joined
+and spoke; BBS connected and echoed; SSH logged in and quit) and each
+quit back to the menu; `Q` to BASIC and `RUN "MENU"` back. After `Q`
+the handoff block says IDLE, so a later `BOOT` stops at `READY.` as
+the table says; `RUN "MENU"` is the way back.
