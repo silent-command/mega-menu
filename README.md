@@ -1,6 +1,6 @@
 # mega-menu
 
-The Mega Net Collection: one disk with every mega-net client on it, and
+Net-Tools: one disk with every mega-net client on it, and
 a menu to start them from.
 
 ```
