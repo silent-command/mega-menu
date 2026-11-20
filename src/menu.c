@@ -401,9 +401,10 @@ static void select(unsigned char n)
 
 int main(void)
 {
-  unsigned char k;
+  unsigned char k, known = 0;
 
   if (lpeek(HANDOFF + 0) == HO_MAGIC0 && lpeek(HANDOFF + 1) == HO_MAGIC1 && lpeek(HANDOFF + 2) == HO_MAGIC2) {
+    known = 1;
     cur_theme = (unsigned char)(lpeek(HANDOFF + HO_THEME) - 1);     /* kept as theme + 1: zero is "never chosen" */
     sel = lpeek(HANDOFF + HO_SEL);
   } else {
@@ -414,6 +415,20 @@ int main(void)
 #ifdef AUTOSEL
   sel = AUTOSEL;                         /* for the emulator tests: a row other than the first */
 #endif
+
+  /* The network. The programs started from here leave the ethernet
+   * controller running when they exit, so the next one starts it with
+   * mega-net's INIT_WARM and skips the 3.5 s a controller and its PHY
+   * need after a reset (mega-net REQUIREMENTS.md 5.23). At a cold start,
+   * or when something held it in reset ($D6E0 bit 0 clear), it is reset
+   * and released here instead, so the link comes up while a program is
+   * being chosen. Nothing else of the network is needed for that. */
+  mega65_io_enable();
+  if (!known || !(PEEK(0xd6e0) & 0x01)) {
+    POKE(0xd6e0, 0x00);
+    for (k = 0; k < 5; k++) wait_frame();
+    POKE(0xd6e0, 0x03);
+  }
 
   lpoke(HANDOFF + HO_STATE, HO_MENU);
   screen_init();

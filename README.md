@@ -79,6 +79,27 @@ So a program started from the menu comes back to the menu, and one
 started with `RUN "NAME"` from BASIC comes back to BASIC. `Q` or
 RUN/STOP in the menu leaves for BASIC; `RUN "MENU"` brings it back.
 
+## The network stays up between programs
+
+Every program brings mega-net up for itself, but one started from the
+menu does it in about 0.3 s instead of 3.8 (mega-net REQUIREMENTS.md
+5.23). The 3.5 s were the ethernet controller's reset and the PHY's
+wait after it, not DHCP:
+
+- A program leaving while the handoff block is there leaves the
+  controller running (`m65_exit.c` in each client, `gopher_exit.S`),
+  link and all. Without the block it holds it in reset, as before.
+- A program the dispatcher started (state RETURN) skips its own hold
+  and calls mega-net's `INIT_WARM` instead of `INIT`, then does its
+  usual DHCP: 0.13 s on a link that is already up. `INIT_WARM` does the
+  full reset after all if it finds the controller held in reset.
+- The menu resets and releases the controller itself at a cold start,
+  or when it finds it held in reset, so the link comes up while a
+  program is chosen. It loads nothing of mega-net for that.
+
+A program started with `RUN "NAME"` from BASIC does the full start, as
+it always did. `spike/warmtest.c` is the measurement.
+
 ## Black between programs
 
 The ROM's reset paints the screen and border blue and reloads the
@@ -154,3 +175,15 @@ and spoke; BBS connected and echoed; SSH logged in and quit) and each
 quit back to the menu; `Q` to BASIC and `RUN "MENU"` back. After `Q`
 the handoff block says IDLE, so a later `BOOT` stops at `READY.` as
 the table says; `RUN "MENU"` is the way back.
+
+The network kept up between programs (2026-11-20), on the R6 over the
+keyboard bridge: every client started from the menu had its DHCP lease
+1.9 to 3.4 s after the key was pressed, counting the reset, the
+dispatcher and both loads (NTP 2.2 s three times running; the same
+launch with the controller put in reset first, so `INIT_WARM` had to
+reset it, 5.7 s three times). Each quit back to the menu. Gemini
+fetched geminiprotocol.net over TLS and Gopher floodgap's menu after a
+warm start; NTP set the clock from the menu and from `RUN "NTP"` in
+BASIC, which took the full start (5 s to a set clock) and quit back to
+BASIC. SFTP logged in to the Mac's test server and moved a
+20,000-byte file down and back up, byte-identical.
