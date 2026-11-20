@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* Warm-start measurement: would a network the menu brought up save time
  * for the programs it launches?
  *

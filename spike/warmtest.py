@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Run the warm-start measurement on the MEGA65 and print what it found.
 
     python3 spike/warmtest.py           put the disk, start it, wait, report

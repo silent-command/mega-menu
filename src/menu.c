@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* The Mega Net Collection menu.
  *
  * One screen: an animated header, the list of programs, a key line. It

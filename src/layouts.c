@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* The layout themes: the menu redrawn in the manner of five other
  * systems. ui.h says how a layout gets its colours out of a screen with
  * one paper; tools/make_tiles.py draws the tiles named here.

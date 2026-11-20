@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* What the menu (menu.c) and its layout themes (layouts.c) share.
  *
  * A layout theme redraws the whole screen in the manner of another

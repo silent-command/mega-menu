@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* The handoff block: how the menu, the dispatcher (AUTOBOOT.C65) and a
  * reset talk to each other.
  *

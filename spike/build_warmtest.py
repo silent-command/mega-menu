@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Build the warm-start measurement disk, build/warmtest/WARMTEST.D81:
 WARMTEST (spike/warmtest.c), mega-net's MEGANET, and the collection's
 AUTOBOOT.C65, which runs WARMTEST again after each of its resets.

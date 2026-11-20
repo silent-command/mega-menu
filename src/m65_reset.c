@@ -1,3 +1,5 @@
+/* Copyright 2026 Justin Cameron
+ * SPDX-License-Identifier: Apache-2.0 */
 /* Leaving through the KERNAL's reset entry.
  *
  * This is the family's exit (mega-ftp src/platform/m65_exit.c, where the

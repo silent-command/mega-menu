@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Build the Mega Net Collection: the menu, the dispatcher, and one disk
 with every client on it.
 
@@ -15,9 +17,9 @@ ssh's overlays) must be byte-identical or the build stops: one MEGANET
 serves every program on the disk.
 
 Settings a user has made live in SEQ files (bookmarks, known hosts, the
-BBS list). If a disk named by CARRY exists (default ../net-tools.d81,
-then the previous bin/NET-TOOLS.D81), its SEQ files are carried onto the
-new disk in place of the clients' defaults.
+BBS list). If a disk named by CARRY exists (default the previous
+bin/NET-TOOLS.D81, then ../net-tools.d81), its SEQ files are carried onto
+the new disk in place of the clients' defaults.
 
 Overrides: LLVM_MOS_DIR, LIBC_SRC, C1541, PETCAT, CARRY, DEFAULT_THEME.
 """

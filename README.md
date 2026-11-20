@@ -187,3 +187,7 @@ warm start; NTP set the clock from the menu and from `RUN "NTP"` in
 BASIC, which took the full start (5 s to a set clock) and quit back to
 BASIC. SFTP logged in to the Mac's test server and moved a
 20,000-byte file down and back up, byte-identical.
+
+## License
+
+Apache License 2.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE).

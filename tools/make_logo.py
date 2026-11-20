@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright 2026 Justin Cameron
+# SPDX-License-Identifier: Apache-2.0
 """Draw the "MEGA NET COLLECTION" header and pack it into character tiles.
 
 The letters are an original rounded stroke face, drawn here from line
