@@ -3,6 +3,25 @@
 Net-Tools: one disk with every mega-net client on it, and
 a menu to start them from.
 
+## Starting
+
+Download `NET-TOOLS.D81` from the releases. Name it `MEGA65.D81` on the
+SD card, or set it as the default disk, and the MEGA65 boots into the
+menu; otherwise mount it and type `BOOT`. Each program you start comes
+back to the menu when you quit it.
+
+## Keys
+
+| Key | Does |
+|---|---|
+| CRSR up / down | move |
+| 1 to 8 | start that program |
+| RETURN | start the selected program |
+| T | the next theme |
+| Q or RUN/STOP | quit to BASIC (`RUN "MENU"` brings the menu back) |
+
+## Building
+
 ```
 python3 build.py        the menu, the dispatcher and bin/NET-TOOLS.D81
 python3 build.py menu   the menu and the dispatcher only
@@ -188,6 +207,7 @@ BASIC, which took the full start (5 s to a set clock) and quit back to
 BASIC. SFTP logged in to the Mac's test server and moved a
 20,000-byte file down and back up, byte-identical.
 
-## License
+## Credits
 
-Apache License 2.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+Created by Justin Cameron. Apache License 2.0; see [LICENSE](LICENSE)
+and [NOTICE](NOTICE).
